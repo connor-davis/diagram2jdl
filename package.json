@@ -1,0 +1,9 @@
+{
+  "name": "generium-sanctuary-diagram2jdl",
+  "version": "1.0.0",
+  "description": "Convert SVG to JDL",
+  "main": "index.js",
+  "author": "Connor Davis",
+  "license": "GPL-3.0",
+  "private": false
+}

@@ -1,0 +1,14 @@
+
+entity UserEntity {
+    name String,
+    email String,
+    password String
+}
+                
+entity AdminEntity {
+    name String,
+    email String,
+    password String,
+    rights AnyBlob
+}
+                

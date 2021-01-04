@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="522px" height="241px" viewBox="-0.5 -0.5 522 241" content="&lt;mxfile host=&quot;app.diagrams.net&quot; modified=&quot;2021-01-04T02:21:01.497Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 Edg/87.0.664.66&quot; etag=&quot;K3ASBMMxM79dQAK-KlYW&quot; version=&quot;14.1.8&quot; type=&quot;google&quot;&gt;&lt;diagram id=&quot;MjQMumXsSrELWO3o846U&quot; name=&quot;Page-1&quot;&gt;5Zpdk5sgFIZ/jZedUYz5uFyzabvTaXuR3e41IyfKFMFBsib99cWKSfyapO2kOPUmkRdQeM8z5IBx/HV6+CBxlnwWBJiDXHJw/EcHoWDu689SOFaCHxghlpRUkncWtvQHGNE16p4SyBsNlRBM0awpRoJziFRDw1KKotlsJ1jzqRmOoSNsI8y66islKqnUZeCe9Y9A46R+sueamhTXjY2QJ5iI4kLyN46/lkKo6io9rIGV3tW+VP3eD9SeBiaBq1s6vLyxb1/CZ3h9kp8wXTF2jJ/embu8YbY3EzaDVcfaASn2nEB5E9fxwyKhCrYZjsraQodca4lKmS55+tLcDqSCw+A4vdPsNTUgUlDyqJsUZ3/RzJiWXHh7ErGJaXzqe562vjAz/w0XUI8LgROEesRUlUN7yUFuqkLwWNa1TdLTVU0nciXFd1gLJqRWuOC6ZbijjLUkzGjMdTHSDwOth6V5VAP4YCpSSkj5mF7rm8H5G/frDsbjY7N4GRvUF5t7hcYfEaD9Fs1utMi/l0WzAXp3FPRih1yOU9BfWyUpjyfG7yywzG8wen6XtvmdX+EXUkzZVAFe2gZ4MXqAPWSb4OUVgjOc54WQZKoQe8g2xavxUdy78Pbmve69XKnDNJz4PpCU8mlkvmg1stTXG9PmbMAk68mvN7R3m2T22wmP7XXXG+H+rW2S9QTYu7aDm1YG3ImPdYhHuInr/FpZT4K9a/u4yWXB3RhZJ3mMeXDbpbltktFQWlyTLMtB5GV6LCWeXmI8t40xGuGC3N7y3krx4m4mDa3HEhhWVPA8oZnTeLeB3K8cnoX++N+Z7kTLOtIjPGdDLZNWPUi7/3RhvnbQdsHyIsTl2YU5yVjotq4SzrRONNrx64G8L35/ALkunt9k/6q7+DuAv/kJ&lt;/diagram&gt;&lt;/mxfile&gt;" style="background-color: rgb(255, 255, 255);">
+	<defs />
+	<g>
+		<rect x="0" y="0" width="240" height="240" fill="#ffffff" stroke="#000000" pointer-events="all" />
+		<rect x="10" y="10" width="220" height="20" fill="none" stroke="none" pointer-events="all" />
+		<g transform="translate(-0.5 -0.5)">
+			<switch>
+				<foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+					<div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 218px; height: 1px; padding-top: 20px; margin-left: 11px;">
+						<div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+							<div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+								%[entity UserEntity]%
+							</div>
+						</div>
+					</div>
+				</foreignObject>
+				<text x="120" y="24" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+					%[entity UserEntity]%
+				</text>
+			</switch>
+		</g>
+		<rect x="10" y="40" width="220" height="30" fill="#ffffff" stroke="#000000" pointer-events="all" />
+		<rect x="10" y="45" width="220" height="20" fill="none" stroke="none" pointer-events="all" />
+		<g transform="translate(-0.5 -0.5)">
+			<switch>
+				<foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+					<div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 218px; height: 1px; padding-top: 55px; margin-left: 11px;">
+						<div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+							<div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+								%[field name String]%
+							</div>
+						</div>
+					</div>
+				</foreignObject>
+				<text x="120" y="59" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+					%[field name String]%
+				</text>
+			</switch>
+		</g>
+		<rect x="10" y="80" width="220" height="30" fill="#ffffff" stroke="#000000" pointer-events="all" />
+		<rect x="10" y="85" width="220" height="20" fill="none" stroke="none" pointer-events="all" />
+		<g transform="translate(-0.5 -0.5)">
+			<switch>
+				<foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+					<div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 218px; height: 1px; padding-top: 95px; margin-left: 11px;">
+						<div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+							<div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+								%[field email String]%
+							</div>
+						</div>
+					</div>
+				</foreignObject>
+				<text x="120" y="99" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+					%[field email String]%
+				</text>
+			</switch>
+		</g>
+		<rect x="10" y="120" width="220" height="30" fill="#ffffff" stroke="#000000" pointer-events="all" />
+		<rect x="10" y="125" width="220" height="20" fill="none" stroke="none" pointer-events="all" />
+		<g transform="translate(-0.5 -0.5)">
+			<switch>
+				<foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+					<div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 218px; height: 1px; padding-top: 135px; margin-left: 11px;">
+						<div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+							<div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+								%[field password String]%
+							</div>
+						</div>
+					</div>
+				</foreignObject>
+				<text x="120" y="139" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+					%[field password String]%
+				</text>
+			</switch>
+		</g>
+		<rect x="280" y="0" width="240" height="200" fill="#ffffff" stroke="#000000" pointer-events="all" />
+		<rect x="290" y="10" width="220" height="20" fill="none" stroke="none" pointer-events="all" />
+		<g transform="translate(-0.5 -0.5)">
+			<switch>
+				<foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+					<div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 218px; height: 1px; padding-top: 20px; margin-left: 291px;">
+						<div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+							<div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+								%[entity AdminEntity]%
+							</div>
+						</div>
+					</div>
+				</foreignObject>
+				<text x="400" y="24" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+					%[entity AdminEntity]%
+				</text>
+			</switch>
+		</g>
+		<rect x="290" y="40" width="220" height="30" fill="#ffffff" stroke="#000000" pointer-events="all" />
+		<rect x="290" y="45" width="220" height="20" fill="none" stroke="none" pointer-events="all" />
+		<g transform="translate(-0.5 -0.5)">
+			<switch>
+				<foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+					<div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 218px; height: 1px; padding-top: 55px; margin-left: 291px;">
+						<div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+							<div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+								%[field name String]%
+							</div>
+						</div>
+					</div>
+				</foreignObject>
+				<text x="400" y="59" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+					%[field name String]%
+				</text>
+			</switch>
+		</g>
+		<rect x="290" y="80" width="220" height="30" fill="#ffffff" stroke="#000000" pointer-events="all" />
+		<rect x="290" y="85" width="220" height="20" fill="none" stroke="none" pointer-events="all" />
+		<g transform="translate(-0.5 -0.5)">
+			<switch>
+				<foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+					<div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 218px; height: 1px; padding-top: 95px; margin-left: 291px;">
+						<div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+							<div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+								%[field email String]%
+							</div>
+						</div>
+					</div>
+				</foreignObject>
+				<text x="400" y="99" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+					%[field email String]%
+				</text>
+			</switch>
+		</g>
+		<rect x="290" y="120" width="220" height="30" fill="#ffffff" stroke="#000000" pointer-events="all" />
+		<rect x="290" y="125" width="220" height="20" fill="none" stroke="none" pointer-events="all" />
+		<g transform="translate(-0.5 -0.5)">
+			<switch>
+				<foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+					<div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 218px; height: 1px; padding-top: 135px; margin-left: 291px;">
+						<div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+							<div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+								%[field password String]%
+							</div>
+						</div>
+					</div>
+				</foreignObject>
+				<text x="400" y="139" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+					%[field password String]%
+				</text>
+			</switch>
+		</g>
+		<rect x="290" y="160" width="220" height="30" fill="#ffffff" stroke="#000000" pointer-events="all" />
+		<rect x="290" y="165" width="220" height="20" fill="none" stroke="none" pointer-events="all" />
+		<g transform="translate(-0.5 -0.5)">
+			<switch>
+				<foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+					<div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 218px; height: 1px; padding-top: 175px; margin-left: 291px;">
+						<div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+							<div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+								%[field rights AnyBlob]%
+							</div>
+						</div>
+					</div>
+				</foreignObject>
+				<text x="400" y="179" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+					%[field rights AnyBlob]%
+				</text>
+			</switch>
+		</g>
+		<rect x="10" y="160" width="220" height="70" fill="#ffffff" stroke="#000000" pointer-events="all" />
+		<rect x="10" y="165" width="220" height="20" fill="none" stroke="none" pointer-events="all" />
+		<g transform="translate(-0.5 -0.5)">
+			<switch>
+				<foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+					<div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 218px; height: 1px; padding-top: 175px; margin-left: 11px;">
+						<div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+							<div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+								%[relationship UserEntity OneToOne]%
+							</div>
+						</div>
+					</div>
+				</foreignObject>
+				<text x="120" y="179" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+					%[relationship UserEntity OneToOne]%
+				</text>
+			</switch>
+		</g>
+		<rect x="20" y="190" width="200" height="30" fill="#ffffff" stroke="#000000" pointer-events="all" />
+		<rect x="20" y="195" width="200" height="20" fill="none" stroke="none" pointer-events="all" />
+		<g transform="translate(-0.5 -0.5)">
+			<switch>
+				<foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+					<div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 198px; height: 1px; padding-top: 205px; margin-left: 21px;">
+						<div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+							<div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+								%[field UserEntity{adminentity} to AdminEntity]%
+							</div>
+						</div>
+					</div>
+				</foreignObject>
+				<text x="120" y="209" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+					%[field UserEntity{adminentity} to AdminEntity]%
+				</text>
+			</switch>
+		</g>
+	</g>
+	<switch>
+		<g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" />
+		<a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+			<text text-anchor="middle" font-size="10px" x="50%" y="100%">
+				Viewer does not support full SVG 1.1
+			</text>
+		</a>
+	</switch>
+</svg>
