@@ -9,10 +9,15 @@ entity AdminEntity {
     name String,
     email String,
     password String,
-    rights AnyBlob
+    rights Rights
 }
                 
 relationship OneToOne {
     UserEntity{adminentity} to AdminEntity
+}
+                
+enum Rights {
+    CAN_WRITE,
+    CAN_READ
 }
                 

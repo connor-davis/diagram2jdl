@@ -10,6 +10,7 @@ let isEnum = false;
 let isRelationShip = false;
 
 let currentEntity = "";
+let currentEnum = "";
 
 (() => {
     let inputFiles = [];
@@ -50,6 +51,8 @@ let currentEntity = "";
 
                     let args = field.split(" ");
 
+                    currentEnum = args[1]
+
                     enums[args[1]] = {
                         type: args[0],
                         name: args[1],
@@ -88,7 +91,21 @@ let currentEntity = "";
                                     && t.name === childField.name
                                 )));
                     } else if (isEnum) {
+                        let args = field.split(" ");
 
+                        enums[currentEnum].childEnums = [...enums[currentEnum].childEnums,
+                        {
+                            type: args[0],
+                            name: args[1]
+                        }];
+
+                        enums[currentEnum].childEnums = enums[currentEnum]
+                            .childEnums
+                            .filter((childField, index, self) =>
+                                index === self.findIndex((t) => (
+                                    t.type === childField.type
+                                    && t.name === childField.name
+                                )));
                     } else if (isRelationShip) {
                         let args = field.split(" ");
 
@@ -137,7 +154,15 @@ ${relationships[relationship].type} ${relationships[relationship].name} {
                 `;
             }
 
-            fs.writeFileSync(path.join(__dirname, "output", "Test.jdl"), dataWrite, { encoding: 'utf8', flag: 'w' })
+            for (let en in enums) {
+                dataWrite += `
+${enums[en].type} ${enums[en].name} {
+    ${enums[en].childEnums.map((field, index) => { return index === 0 ? `${field.name}` : `\n    ${field.name}`})}
+}
+                `;
+            }
+
+            fs.writeFileSync(path.join(__dirname, "output", file.split(".")[0] + ".jdl"), dataWrite, { encoding: 'utf8', flag: 'w' })
         });
     });
 })();
