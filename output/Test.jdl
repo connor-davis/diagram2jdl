@@ -12,3 +12,7 @@ entity AdminEntity {
     rights AnyBlob
 }
                 
+relationship OneToOne {
+    UserEntity{adminentity} to AdminEntity
+}
+                

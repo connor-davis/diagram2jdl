@@ -129,6 +129,14 @@ ${entities[entity].type} ${entities[entity].name} {
                 `;
             }
 
+            for (let relationship in relationships) {
+                dataWrite += `
+${relationships[relationship].type} ${relationships[relationship].name} {
+    ${relationships[relationship].childRelationships.map((field, index) => { return index === 0 ? `${field.relationParent}{${field.relationName}} to ${field.relationTo}` : `\n    ${field.relationParent}{${field.relationName}} to ${field.relationTo}` })}
+}
+                `;
+            }
+
             fs.writeFileSync(path.join(__dirname, "output", "Test.jdl"), dataWrite, { encoding: 'utf8', flag: 'w' })
         });
     });
