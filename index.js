@@ -27,15 +27,13 @@ let currentEnum = "";
             let regex = /(?<=\%\[).*?(?=\]\%)/gs;
             let matches = dataString.match(regex);
 
-            let fields = [...matches];
-
-            fields.forEach((field) => {
-                if (field.startsWith("entity")) {
+            matches.forEach((match) => {
+                if (match.startsWith("entity")) {
                     isEntity = true;
                     isEnum = false;
                     isRelationShip = false;
 
-                    let args = field.split(" ");
+                    let args = match.split(" ");
 
                     currentEntity = args[1];
 
@@ -44,12 +42,12 @@ let currentEnum = "";
                         name: args[1],
                         childFields: []
                     };
-                } else if (field.startsWith("enum")) {
+                } else if (match.startsWith("enum")) {
                     isEntity = false;
                     isEnum = true;
                     isRelationShip = false;
 
-                    let args = field.split(" ");
+                    let args = match.split(" ");
 
                     currentEnum = args[1]
 
@@ -58,12 +56,12 @@ let currentEnum = "";
                         name: args[1],
                         childEnums: []
                     };
-                } else if (field.startsWith("relationship")) {
+                } else if (match.startsWith("relationship")) {
                     isEntity = false;
                     isEnum = false;
                     isRelationShip = true;
 
-                    let args = field.split(" ");
+                    let args = match.split(" ");
 
                     currentEntity = args[1];
 
@@ -73,9 +71,9 @@ let currentEnum = "";
                         name: args[2],
                         childRelationships: []
                     };
-                } else if (field.startsWith("field")) {
+                } else if (match.startsWith("field")) {
                     if (isEntity) {
-                        let args = field.split(" ");
+                        let args = match.split(" ");
 
                         entities[currentEntity].childFields = [...entities[currentEntity].childFields,
                         {
@@ -91,7 +89,7 @@ let currentEnum = "";
                                     && t.name === childField.name
                                 )));
                     } else if (isEnum) {
-                        let args = field.split(" ");
+                        let args = match.split(" ");
 
                         enums[currentEnum].childEnums = [...enums[currentEnum].childEnums,
                         {
@@ -107,7 +105,7 @@ let currentEnum = "";
                                     && t.name === childField.name
                                 )));
                     } else if (isRelationShip) {
-                        let args = field.split(" ");
+                        let args = match.split(" ");
 
                         if (args[1].startsWith(currentEntity)) {
                             let relationName = args[1].replace(currentEntity + "{", "").replace("}", "");
@@ -139,30 +137,40 @@ let currentEnum = "";
             let dataWrite = "";
 
             for (let entity in entities) {
-                dataWrite += `
-${entities[entity].type} ${entities[entity].name} {
-    ${entities[entity].childFields.map((field, index) => { return index === 0 ? `${field.name} ${field.type}` : `\n    ${field.name} ${field.type}` })}
-}
-                `;
+                dataWrite += `${entities[entity].type} ${entities[entity].name} {\n${entities[entity]
+                    .childFields
+                    .map((field, index) => {
+                        return index === 0 ?
+                            `${field.name} ${field.type}` :
+                            `\n${field.name} ${field.type}`
+                    })}\n}\n\n`;
             }
 
             for (let relationship in relationships) {
-                dataWrite += `
-${relationships[relationship].type} ${relationships[relationship].name} {
-    ${relationships[relationship].childRelationships.map((field, index) => { return index === 0 ? `${field.relationParent}{${field.relationName}} to ${field.relationTo}` : `\n    ${field.relationParent}{${field.relationName}} to ${field.relationTo}` })}
-}
-                `;
+                dataWrite += `${relationships[relationship].type} ${relationships[relationship].name} {\n${relationships[relationship]
+                    .childRelationships
+                    .map((field, index) => {
+                        return index === 0 ?
+                            `${field.relationParent}{${field.relationName}} to ${field.relationTo}` :
+                            `\n${field.relationParent}{${field.relationName}} to ${field.relationTo}`
+                    })}\n}\n\n`;
             }
 
             for (let en in enums) {
-                dataWrite += `
-${enums[en].type} ${enums[en].name} {
-    ${enums[en].childEnums.map((field, index) => { return index === 0 ? `${field.name}` : `\n    ${field.name}`})}
-}
-                `;
+                dataWrite += `${enums[en].type} ${enums[en].name} {\n${enums[en]
+                    .childEnums
+                    .map((field, index) => {
+                        return index === 0 ?
+                            `${field.name}` :
+                            `\n${field.name}`
+                    })}\n}\n\n`;
             }
 
-            fs.writeFileSync(path.join(__dirname, "output", file.split(".")[0] + ".jdl"), dataWrite, { encoding: 'utf8', flag: 'w' })
+            if (fs.existsSync(path.join(__dirname, "output"))) return fs.writeFileSync(path.join(__dirname, "output", file.split(".")[0] + ".jdl"), dataWrite, { encoding: 'utf8', flag: 'w' });
+            else {
+                fs.mkdirSync("output");
+                return fs.writeFileSync(path.join(__dirname, "output", file.split(".")[0] + ".jdl"), dataWrite, { encoding: 'utf8', flag: 'w' });
+            }
         });
     });
 })();

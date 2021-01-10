@@ -1,23 +1,26 @@
-
-entity UserEntity {
-    name String,
-    email String,
-    password String
+entity TestEntity {
+    rights Rights,
+name String,
+email String,
+password String
 }
-                
 entity AdminEntity {
     name String,
-    email String,
-    password String,
-    rights Rights
+email String,
+password String,
+rights Rights
 }
-                
+entity UserEntity {
+    name String,
+email String,
+password String
+}
+relationship OneToOne {
+    TestEntity{adminentity} to AdminEntity
+}
 relationship OneToOne {
     UserEntity{adminentity} to AdminEntity
 }
-                
 enum Rights {
-    CAN_WRITE,
-    CAN_READ
+    CAN_WRITE, CAN_READ
 }
-                
