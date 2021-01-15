@@ -1,17 +1,6 @@
 let fs = require("fs");
 let path = require("path");
 
-let entities = {};
-let enums = {};
-let relationships = {};
-
-let isEntity = false;
-let isEnum = false;
-let isRelationShip = false;
-
-let currentEntity = "";
-let currentEnum = "";
-
 (() => {
     let inputFiles = [];
 
@@ -24,153 +13,95 @@ let currentEnum = "";
             if (error) return console.log(error);
 
             let dataString = data.toString("utf-8");
-            let regex = /(?<=\%\[).*?(?=\]\%)/gs;
-            let matches = dataString.match(regex);
 
-            matches.forEach((match) => {
-                if (match.startsWith("entity")) {
-                    isEntity = true;
-                    isEnum = false;
-                    isRelationShip = false;
+            let objectRegex = /(?<=\<object).*?(?=<\/object>)/gs;
+            let objects = dataString.match(objectRegex);
 
-                    let args = match.split(" ");
+            let entities = {};
+            let relationships = [];
 
-                    currentEntity = args[1];
+            objects.forEach((object) => {
+                let idRegex = /(?<=id=").*?(?=")/gs;
+                let id = object.match(idRegex)[0].trim();
 
-                    entities[args[1]] = {
-                        type: args[0],
-                        name: args[1],
-                        childFields: []
-                    };
-                } else if (match.startsWith("enum")) {
-                    isEntity = false;
-                    isEnum = true;
-                    isRelationShip = false;
+                let labelRegex = /(?<=label=").*?(?=")/gs;
+                let label = object.match(labelRegex)[0].trim();
 
-                    let args = match.split(" ");
+                let typeRegex = /(?<=type=").*?(?=")/gs;
+                let type = object.match(typeRegex)[0].trim();
 
-                    currentEnum = args[1]
+                entities[id] = { label, type };
+            });
 
-                    enums[args[1]] = {
-                        type: args[0],
-                        name: args[1],
-                        childEnums: []
-                    };
-                } else if (match.startsWith("relationship")) {
-                    isEntity = false;
-                    isEnum = false;
-                    isRelationShip = true;
+            let cellRegex = /(?<=\<mxCell).*?(?=\<\/mxCell>)/gs;
+            let cells = dataString.match(cellRegex);
 
-                    let args = match.split(" ");
+            cells = cells.map((cell) => {
+                let idRegex = /(?<=id=").*?(?=")/gs;
+                let id = cell.match(idRegex) ? cell.match(idRegex)[0].trim() : "";
 
-                    currentEntity = args[1];
+                let valueRegex = /(?<=value=").*?(?=")/gs;
+                let value = cell.match(valueRegex) ? cell.match(valueRegex)[0].trim() : "";
 
-                    relationships[args[1]] = {
-                        type: args[0],
-                        parent: args[1],
-                        name: args[2],
-                        childRelationships: []
-                    };
-                } else if (match.startsWith("field")) {
-                    if (isEntity) {
-                        let args = match.split(" ");
+                value = value.split("&#xa;+");
+                value = value.filter((val) => val !== "");
+                value = value.map((val) => {
+                    val = val.replace("+", "");
+                    val = val.replace(":", " ");
+                    return val;
+                });
 
-                        entities[currentEntity].childFields = [...entities[currentEntity].childFields,
-                        {
-                            type: args[2],
-                            name: args[1]
-                        }];
+                let parentRegex = /(?<=parent=").*?(?=")/gs;
+                let parent = cell.match(parentRegex)[0].trim();
 
-                        entities[currentEntity].childFields = entities[currentEntity]
-                            .childFields
-                            .filter((childField, index, self) =>
-                                index === self.findIndex((t) => (
-                                    t.type === childField.type
-                                    && t.name === childField.name
-                                )));
-                    } else if (isEnum) {
-                        let args = match.split(" ");
+                let sourceRegex = /(?<=source=").*?(?=")/gs;
+                let source = cell.match(sourceRegex) ? cell.match(sourceRegex)[0].trim() : "";
 
-                        enums[currentEnum].childEnums = [...enums[currentEnum].childEnums,
-                        {
-                            type: args[0],
-                            name: args[1]
-                        }];
+                let targetRegex = /(?<=target=").*?(?=")/gs;
+                let target = cell.match(targetRegex) ? cell.match(targetRegex)[0].trim() : "";
 
-                        enums[currentEnum].childEnums = enums[currentEnum]
-                            .childEnums
-                            .filter((childField, index, self) =>
-                                index === self.findIndex((t) => (
-                                    t.type === childField.type
-                                    && t.name === childField.name
-                                )));
-                    } else if (isRelationShip) {
-                        let args = match.split(" ");
+                if (parent !== "1" && parent !== "0") entities[parent] = { ...entities[parent], data: value };
 
-                        if (args[1].startsWith(currentEntity)) {
-                            let relationName = args[1].replace(currentEntity + "{", "").replace("}", "");
-                            let relationParent = currentEntity;
-                            let relationTo = args[3];
-
-                            relationships[currentEntity].childRelationships = [
-                                ...relationships[currentEntity].childRelationships,
-                                {
-                                    relationName,
-                                    relationParent,
-                                    relationTo
-                                }
-                            ];
-
-                            relationships[currentEntity].childRelationships = relationships[currentEntity]
-                                .childRelationships
-                                .filter((childField, index, self) =>
-                                    index === self.findIndex((t) => (
-                                        t.relationName === childField.relationName
-                                        && t.relationParent === childField.relationParent
-                                        && t.relationTo === childField.relationTo
-                                    )));
-                        }
-                    }
+                if (source && target) {
+                    relationships.push(entities[source].label + " to " + entities[target].label);
                 }
             });
 
-            let dataWrite = "";
-
-            for (let entity in entities) {
-                dataWrite += `${entities[entity].type} ${entities[entity].name} {\n${entities[entity]
-                    .childFields
-                    .map((field, index) => {
-                        return index === 0 ?
-                            `${field.name} ${field.type}` :
-                            `\n${field.name} ${field.type}`
-                    })}\n}\n\n`;
-            }
-
-            for (let relationship in relationships) {
-                dataWrite += `${relationships[relationship].type} ${relationships[relationship].name} {\n${relationships[relationship]
-                    .childRelationships
-                    .map((field, index) => {
-                        return index === 0 ?
-                            `${field.relationParent}{${field.relationName}} to ${field.relationTo}` :
-                            `\n${field.relationParent}{${field.relationName}} to ${field.relationTo}`
-                    })}\n}\n\n`;
-            }
-
-            for (let en in enums) {
-                dataWrite += `${enums[en].type} ${enums[en].name} {\n${enums[en]
-                    .childEnums
-                    .map((field, index) => {
-                        return index === 0 ?
-                            `${field.name}` :
-                            `\n${field.name}`
-                    })}\n}\n\n`;
-            }
-
-            if (fs.existsSync(path.join(__dirname, "output"))) return fs.writeFileSync(path.join(__dirname, "output", file.split(".")[0] + ".jdl"), dataWrite, { encoding: 'utf8', flag: 'w' });
-            else {
-                fs.mkdirSync("output");
-                return fs.writeFileSync(path.join(__dirname, "output", file.split(".")[0] + ".jdl"), dataWrite, { encoding: 'utf8', flag: 'w' });
-            }
+            writeJDL({ entities, relationships }, file);
         });
     });
 })();
+
+let writeJDL = ({ entities, relationships }, file) => {
+    let dataWrite = "";
+    let relationshipData = "relationship ManyToMany {\n";
+
+    for (let e in entities) {
+        let entity = entities[e];
+
+        dataWrite += `entity ${entity.label} {\n${entity.data.map((data) => {
+            return `${data}\n`;
+        })}}\n\n`;
+    }
+
+    relationships.forEach((relationship) => relationshipData += relationship + "\n");
+    relationshipData += "}\n";
+
+    dataWrite += relationshipData;
+
+    if (fs.existsSync(path.join(__dirname, "output"))) return fs
+        .writeFileSync(
+            path.join(__dirname, "output", file.split(".")[0] + ".jdl"),
+            dataWrite,
+            { encoding: 'utf8', flag: 'w' }
+        );
+    else {
+        fs.mkdirSync("output");
+        return fs
+            .writeFileSync(
+                path.join(__dirname, "output", file.split(".")[0] + ".jdl"),
+                dataWrite,
+                { encoding: 'utf8', flag: 'w' }
+            );
+    }
+}
